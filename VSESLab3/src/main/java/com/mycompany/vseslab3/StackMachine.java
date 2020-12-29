@@ -90,7 +90,7 @@ public class StackMachine {
             if(isNumber(stack.lastElement())) temp.push(stack.pop());
             if(isVariable(stack.lastElement())) temp.push(String.valueOf(args[variable.indexOf(stack.pop())]));
             if(isOperator(stack.lastElement())) temp.push(String.valueOf(operation(temp.pop(),temp.pop(),stack.pop())));
-            if(isFunction(stack.lastElement())) temp.push(String.valueOf(countFunction(stack.pop(),stack.pop())));
+            if(!stack.isEmpty()) {if(isFunction(stack.lastElement())) temp.push(String.valueOf(countFunction(stack.pop(),stack.pop())));}
         }
         return Double.parseDouble(temp.pop());
     }

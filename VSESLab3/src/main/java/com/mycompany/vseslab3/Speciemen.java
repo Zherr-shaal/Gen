@@ -10,11 +10,23 @@ package com.mycompany.vseslab3;
  * @author Matt
  */
 public class Speciemen {
-    private int number;
 
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
+    }
+   
+
+    public int[] getGenes() {
+        return genes;
+    }
+
+    private Speciemen(int[] gen,double fit){
+         genes=gen;
+        fitness=fit;
+    }
     @Override
     protected Object clone() {
-        return new Speciemen(number,genes); 
+        return new Speciemen(genes,fitness); 
     }
     private int[] genes;
 
@@ -22,14 +34,14 @@ public class Speciemen {
         return fitness;
     }
     private double fitness;
-    public Speciemen(int num,int[] gen){
-        number=num;
+    public Speciemen(int[] gen){
+
         genes=gen;
         fitness=StackMachine.countStack(gen);
     }
     @Override
     public String toString() {
-        String temp= "Особь №"+number+"Гены:{";
+        String temp= "Гены особи:{";
         for(int i:genes){
             temp+=String.valueOf(i)+",";
         }
