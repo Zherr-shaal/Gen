@@ -63,6 +63,8 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel1.setText("Введите функцию");
 
+        jTextField1.setText("x+y");
+
         jLabel2.setText("f(x,y) =");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Минимум", "Максимум", "Всё" }));
@@ -70,6 +72,8 @@ public class Interface extends javax.swing.JFrame {
         jLabel3.setText("Размер популяции:");
 
         jLabel4.setText("n =");
+
+        jTextField2.setText("10");
 
         jLabel5.setText("Интервал поиска:");
 
@@ -96,11 +100,20 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel12.setText("P =");
 
+        jTextField3.setText("0.5");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jCheckBox1.setText("Уменьшать?");
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
+
+        jTextField4.setText("10");
 
         jLabel13.setText("Количество итераций");
 
@@ -109,6 +122,8 @@ public class Interface extends javax.swing.JFrame {
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "31", "63", "127", "255" }));
 
         jLabel15.setText("Скрещивать особей");
+
+        jTextField5.setText("3");
 
         jLabel16.setText("c =");
 
@@ -162,9 +177,7 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1)))
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -238,6 +251,10 @@ public class Interface extends javax.swing.JFrame {
        alg=new GeneticAlgorithm(Integer.parseInt(jTextField4.getText()),Integer.parseInt(jTextField5.getText()),Integer.parseInt(jTextField2.getText()),max,smin,smax,Double.parseDouble(jTextField3.getText()),red);
         jTextArea1.setText(alg.Run());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments

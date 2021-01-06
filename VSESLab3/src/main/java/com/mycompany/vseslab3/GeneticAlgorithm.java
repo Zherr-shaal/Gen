@@ -94,7 +94,7 @@ public class GeneticAlgorithm {
         String templog="";
         for(int i=0;i<iterNum;i++){
             templog+="Итерация№"+(i+1)+" Вероятность мутации: "+Pm+"\n";
-            exclusiveSelection(true);
+            
             population=sortPopulation(population);
             templog+="Популяция:\n";
             for(int j=0;j<population.length;j++){
