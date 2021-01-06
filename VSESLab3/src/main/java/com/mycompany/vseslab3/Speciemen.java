@@ -41,12 +41,12 @@ public class Speciemen {
     }
     @Override
     public String toString() {
-        String temp= "Гены особи:{";
+        String temp= "Гены особи:\n{";
         for(int i:genes){
             temp+=String.valueOf(i)+",";
         }
         temp=temp.substring(0,temp.length()-1);
-        temp+="} Критерий особи:"+fitness;
+        temp+="}\n"; //Критерий особи:"+fitness;
         return temp;
     }
     

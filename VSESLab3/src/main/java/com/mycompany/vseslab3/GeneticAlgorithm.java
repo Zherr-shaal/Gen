@@ -89,14 +89,30 @@ public class GeneticAlgorithm {
         }
         return templog;
     }
+    private void KillBadSpicemens(Speciemen[] parents, Speciemen[] children) {
+        Speciemen[] temp = parents;
+        int h = 0;
+        for (int j = h; j < parents.length; j++)
+            for (int i = 0; i < parents.length; i++) {
+                if (children[j].getFitness() < parents[i].getFitness()) {
+                    temp[i] = children[j];
+                    h++;
+                }
+            }
+        parents = temp;
+    }
+
+
      private String SolveMax(){
         population=getStartPopulation();
         String templog="";
         for(int i=0;i<iterNum;i++){
-            templog+="Итерация№"+(i+1)+" Вероятность мутации: "+Pm+"\n";
+            templog+="----| Итерация№ "+(i+1)+" Вероятность мутации: "+Pm+" |----\n";
             
             population=sortPopulation(population);
+
             templog+="Популяция:\n";
+
             for(int j=0;j<population.length;j++){
                 templog+=population[j].toString()+" ";
             }
