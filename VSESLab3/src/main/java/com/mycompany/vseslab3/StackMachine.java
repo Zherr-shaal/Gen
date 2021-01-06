@@ -20,7 +20,7 @@ public class StackMachine {
         initialStack=init;
     }    
     public static StackMachine getInstance(Stack<String> init){
-        if(machine==null) machine=new StackMachine(init);
+        machine=new StackMachine(init);
         return machine;
     }
     private static final String operators="+-*/^";
@@ -30,9 +30,9 @@ public class StackMachine {
         if(operator.charAt(0)==operators.charAt(0)) return Double.parseDouble(token1)+ Double.parseDouble(token2);
         if(operator.charAt(0)==operators.charAt(1)) return  Double.parseDouble(token2)- Double.parseDouble(token1);
         if(operator.charAt(0)==operators.charAt(2)) return  Double.parseDouble(token1)* Double.parseDouble(token2);
-        if(operator.charAt(0)==operators.charAt(3)) return  Double.parseDouble(token2)/Double.parseDouble(token1);//token1 gets second element from stack
+        if(operator.charAt(0)==operators.charAt(3)&&Double.parseDouble(token1)!=0) return  Double.parseDouble(token2)/Double.parseDouble(token1);//token1 gets second element from stack
         if(operator.charAt(0)==operators.charAt(4)) return (int)pow(Double.parseDouble(token2), Double.parseDouble(token1));
-        return 0;
+        return -1;
     }
     private static double countFunction(String func,String arg){
         if(func==functions[0]) return sin(Double.parseDouble(arg));
