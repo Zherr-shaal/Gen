@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6787a707-9439-4575-94d3-88766a679227" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/vseslab3/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/vseslab3/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/vseslab3/Speciemen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/vseslab3/Speciemen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/GeneticAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/Speciemen.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/Speciemen.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/StackMachine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/vseslab3/StackMachine.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

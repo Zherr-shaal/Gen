@@ -108,14 +108,14 @@ public class GeneticAlgorithm {
          Speciemen[] crossing=new Speciemen[crossNum];
 
         for(int i=0;i<iterNum;i++){
-            templog+="----| Итерация№ "+(i+1)+" Вероятность мутации: "+Pm+" |----\n";
+            templog+="----| Итерация № "+(i+1)+" Вероятность мутации: "+Pm+" |----\n";
             
             population=sortPopulation(population);
 
             templog+="Популяция:\n";
 
             for(int j=0;j<population.length;j++){
-                templog+=population[j].toString()+" ";
+                templog+=j+1 + " " + population[j].toString()+"\n";
             }
             int h =0;
             if (i != 0)
@@ -131,13 +131,13 @@ public class GeneticAlgorithm {
             }
             templog+="\nСкрещиваются:\n";
             for(int j=0;j<crossing.length;j++){
-                templog+=crossing[j].toString()+" ";
+                templog+=j + 1 + " " + crossing[j].toString()+"\n";
             }
             Speciemen[] newSpeciemen=CrossAndMutate(crossing);
             newSpeciemen=sortPopulation(newSpeciemen);
             templog+="\nНовые особи:\n";
             for(int j=0;j<newSpeciemen.length;j++){
-                templog+=newSpeciemen[j].toString()+" ";
+                templog+= j + 1 + " " + newSpeciemen[j].toString()+"\n";
             }
             if(newSpeciemen.length<n){
                 for(int j=0;j<n-newSpeciemen.length;j++){
