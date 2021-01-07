@@ -65,9 +65,9 @@ public class Interface extends javax.swing.JFrame {
 
         jTextField1.setText("x+y");
 
-        jLabel2.setText("f(x,y) =");
+        jLabel2.setText("f =");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Минимум", "Максимум", "Всё" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Минимум", "Максимум"}));
 
         jLabel3.setText("Размер популяции:");
 
@@ -100,7 +100,7 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel12.setText("P =");
 
-        jTextField3.setText("0.5");
+        jTextField3.setText("0.1");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);

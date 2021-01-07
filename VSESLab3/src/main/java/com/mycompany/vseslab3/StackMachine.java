@@ -30,7 +30,15 @@ public class StackMachine {
         if(operator.charAt(0)==operators.charAt(0)) return Double.parseDouble(token1)+ Double.parseDouble(token2);
         if(operator.charAt(0)==operators.charAt(1)) return  Double.parseDouble(token2)- Double.parseDouble(token1);
         if(operator.charAt(0)==operators.charAt(2)) return  Double.parseDouble(token1)* Double.parseDouble(token2);
-        if(operator.charAt(0)==operators.charAt(3)&&Double.parseDouble(token1)!=0) return  Double.parseDouble(token2)/Double.parseDouble(token1);//token1 gets second element from stack
+        if(operator.charAt(0)==operators.charAt(3)) return Double.parseDouble(token2)/Double.parseDouble(token1);
+        /*
+        {
+            if (Double.parseDouble(token1) == 0)
+                    return Double.parseDouble(token2)/Double.parseDouble(token1);
+                else
+                    return  Double.parseDouble(token2)/Double.parseDouble(token1);
+        }
+        */
         if(operator.charAt(0)==operators.charAt(4)) return (int)pow(Double.parseDouble(token2), Double.parseDouble(token1));
         return -1;
     }
