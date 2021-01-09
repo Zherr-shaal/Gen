@@ -66,7 +66,7 @@ public class Interface extends javax.swing.JFrame {
 
         jTextField1.setText("x+y");
 
-        jLabel2.setText("f(x,y) =");
+        jLabel2.setText("f =");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Минимум", "Максимум", "Всё" }));
 
@@ -101,7 +101,7 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel12.setText("P =");
 
-        jTextField3.setText("0.5");
+        jTextField3.setText("0.15");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -114,7 +114,7 @@ public class Interface extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        jTextField4.setText("10");
+        jTextField4.setText("100");
 
         jLabel13.setText("Количество итераций");
 
@@ -128,7 +128,7 @@ public class Interface extends javax.swing.JFrame {
 
         jLabel16.setText("c =");
 
-        jCheckBox2.setText("Удалять недопустимые особи");
+        jCheckBox2.setText("Исключ. беск. крит.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,7 +253,7 @@ public class Interface extends javax.swing.JFrame {
        boolean smax=jComboBox1.getSelectedIndex()==1||jComboBox1.getSelectedIndex()==2;
        boolean red=jCheckBox1.isSelected();
        int max=Integer.parseInt((String)jComboBox2.getSelectedItem());
-       alg=new GeneticAlgorithm(Integer.parseInt(jTextField4.getText()),Integer.parseInt(jTextField5.getText()),Integer.parseInt(jTextField2.getText()),max,smin,smax,Double.parseDouble(jTextField3.getText()),red);
+       alg=new GeneticAlgorithm(Integer.parseInt(jTextField4.getText()),Integer.parseInt(jTextField5.getText()),Integer.parseInt(jTextField2.getText()),max,smin,smax,Double.parseDouble(jTextField3.getText()),red,jCheckBox2.isSelected());
         jTextArea1.setText(alg.Run());
     }//GEN-LAST:event_jButton1ActionPerformed
 

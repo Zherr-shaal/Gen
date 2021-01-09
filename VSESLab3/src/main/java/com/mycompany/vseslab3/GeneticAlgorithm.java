@@ -23,6 +23,8 @@ public class GeneticAlgorithm {
     private boolean smax;       //решаем на максисмум
     private double Pm;          //вероятность мутации
     private boolean red;        //уменьшать?
+    private boolean delInf;     //без бесконечного критерия
+
     private Speciemen[] population;
     private int getMaxBinaryLength(){
         String temp=Integer.toBinaryString(max);
@@ -35,15 +37,16 @@ public class GeneticAlgorithm {
         }
         return add+str;
     }
-    public GeneticAlgorithm(int iterNum, int crossNum, int n, int max, boolean smin, boolean smax, double Pm, boolean red) {
+    public GeneticAlgorithm(int iterNum, int crossNum, int n, int max, boolean smin, boolean smax, double Pm, boolean red, boolean delInf) {
         this.iterNum = iterNum;
         this.crossNum = crossNum;
         this.max = max;
-        this.n=n;
+        this.n = n;
         this.smin = smin;
         this.smax = smax;
         this.Pm = Pm;
-        this.red=red;
+        this.red = red;
+        this.delInf = delInf;
     }
     public String Run(){
         log="";
@@ -51,8 +54,37 @@ public class GeneticAlgorithm {
         if(smax) log+="РЕШЕНИЕ НА МАКСИМУМ\n"+SolveMax();
         return log;
     }
+    private Speciemen GetNotInfSpecimen(Speciemen[] popul){
+        for(int j=0;j<popul.length;j++){
+            if (!Double.isInfinite(popul[j].getFitness())){
+                return popul[j];
+            }
+        }
+        return null;
+    }
+    private  Speciemen[] GetStartPopulatonExcInf(){
+        Speciemen[] temp_spec_arr = null;
+        Speciemen temp_spec = null;
+        do {
+            temp_spec_arr = getStartPopulation();
+            temp_spec = GetNotInfSpecimen(temp_spec_arr);
+        } while (temp_spec == null);
+
+        for(int j=0;j<temp_spec_arr.length;j++){
+            if (Double.isInfinite(temp_spec_arr[j].getFitness())){
+                temp_spec_arr[j] = temp_spec;
+            }
+        }
+        return  temp_spec_arr;
+    }
+
     private String SolveMin(){
-        population=getStartPopulation();
+
+        if (delInf)
+            population = GetStartPopulatonExcInf();
+        else
+            population=getStartPopulation();
+
         String templog="";
 
         Speciemen[] crossing=new Speciemen[crossNum];
@@ -86,9 +118,18 @@ public class GeneticAlgorithm {
             Speciemen[] newSpeciemen=CrossAndMutate(crossing);
             newSpeciemen=sortPopulation(newSpeciemen, false);
             templog+="\nНовые особи:\n";
+
             for(int j=0;j<newSpeciemen.length;j++){
-                templog+= j + 1 + " " + newSpeciemen[j].toString()+"\n";
+                templog+= j + 1 + " " + newSpeciemen[j].toString();
+
+                if (delInf && Double.isInfinite(newSpeciemen[j].getFitness())){
+                    templog+= " : особь удалёна (бесконечный критерий)";
+                    newSpeciemen[j] = crossing[crossNum-1];
+                }
+
+                templog+="\n";
             }
+
             if(newSpeciemen.length<n){
                 for(int j=0;j<n-newSpeciemen.length;j++){
                     population[newSpeciemen.length+j]=population[j];
@@ -104,7 +145,12 @@ public class GeneticAlgorithm {
     }
 
      private String SolveMax(){
-        population=getStartPopulation();
+
+         if (delInf)
+             population = GetStartPopulatonExcInf();
+         else
+             population=getStartPopulation();
+
         String templog="";
 
          Speciemen[] crossing=new Speciemen[crossNum];
@@ -139,7 +185,14 @@ public class GeneticAlgorithm {
             newSpeciemen=sortPopulation(newSpeciemen, true);
             templog+="\nНовые особи:\n";
             for(int j=0;j<newSpeciemen.length;j++){
-                templog+= j + 1 + " " + newSpeciemen[j].toString()+"\n";
+                templog+= j + 1 + " " + newSpeciemen[j].toString();
+
+                if (delInf && Double.isInfinite(newSpeciemen[j].getFitness())){
+                    templog+= " : особь удалёна (бесконечный критерий)";
+                    newSpeciemen[j] = crossing[crossNum-1];
+                }
+
+                templog+="\n";
             }
             if(newSpeciemen.length<n){
                 for(int j=0;j<n-newSpeciemen.length;j++){
