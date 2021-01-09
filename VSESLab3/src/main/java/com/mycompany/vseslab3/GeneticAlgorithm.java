@@ -50,8 +50,14 @@ public class GeneticAlgorithm {
     }
     public String Run(){
         log="";
-        if(smin) log+="РЕШЕНИЕ НА МИНИМУМ\n"+SolveMin();
-        if(smax) log+="РЕШЕНИЕ НА МАКСИМУМ\n"+SolveMax();
+        if(smin){ 
+            log+="РЕШЕНИЕ НА МИНИМУМ\n"+SolveMin()+"\n-------------------------------------------------------------------------------------------\n";
+            log+="НАИБОЛЕЕ ПРИСПОСОБЛЕННАЯ ОСОБЬ\n"+population[0].toString()+"\n-------------------------------------------------------------------------------------------\n";
+        }
+        if(smax){
+            log+="РЕШЕНИЕ НА МАКСИМУМ\n"+SolveMax()+"\n-------------------------------------------------------------------------------------------\n";
+            log+="НАИБОЛЕЕ ПРИСПОСОБЛЕННАЯ ОСОБЬ\n"+population[0].toString()+"\n-------------------------------------------------------------------------------------------\n\n";
+        }
         return log;
     }
     private Speciemen GetNotInfSpecimen(Speciemen[] popul){
@@ -92,13 +98,9 @@ public class GeneticAlgorithm {
         for(int i=0;i<iterNum;i++){
             templog+="----| Итерация № "+(i+1)+" Вероятность мутации: "+Pm+" |----\n";
 
-            population=sortPopulation(population, false);
 
             templog+="Популяция:\n";
 
-            for(int j=0;j<population.length;j++){
-                templog+=j+1 + " " + population[j].toString()+"\n";
-            }
             int h =0;
             if (i != 0)
                 for (int j = population.length - crossNum; j < population.length; j++){
@@ -107,6 +109,10 @@ public class GeneticAlgorithm {
                 }
 
             population=sortPopulation(population, false);
+            for(int j=0;j<population.length;j++){
+                templog+=j+1 + " " + population[j].toString()+"\n";
+            }
+            
 
             for(int j=0;j<crossNum;j++){
                 crossing[j]=population[j];
@@ -158,21 +164,22 @@ public class GeneticAlgorithm {
         for(int i=0;i<iterNum;i++){
             templog+="----| Итерация № "+(i+1)+" Вероятность мутации: "+Pm+" |----\n";
             
-            population=sortPopulation(population, true);
+           
 
             templog+="Популяция:\n";
 
-            for(int j=0;j<population.length;j++){
-                templog+=j+1 + " " + population[j].toString()+"\n";
-            }
             int h =0;
             if (i != 0)
             for (int j = population.length - crossNum; j < population.length; j++){
                 population[j] = crossing[h];
                 h++;
             }
-
             population=sortPopulation(population, true);
+            for(int j=0;j<population.length;j++){
+                templog+=j+1 + " " + population[j].toString()+"\n";
+            }
+            
+
 
             for(int j=0;j<crossNum;j++){
                 crossing[j]=population[j];
